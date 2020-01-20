@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Task from '../Task/Task'
 import Button from '../Button/Button'
+import './TaskList.css';
 
 class TaskList extends Component{
 
@@ -36,22 +37,24 @@ class TaskList extends Component{
 
     render(){
         return(
-            <div id="TaskList">
-                <p>Tasks:{this.state.descriptions.length}</p>
-                {
-                    this.state.descriptions.map( (text,i) =>
+            <main>
+                <div className="taskList">
+                    <p>Tasks:{this.state.descriptions.length}</p>
                     {
-                        return (
-                        <Task key={i} index={i} updateTaskDescription={this.updateTask} removeTaskFromList={this.removeTask}>{text}</Task>
-                        );
-                    })
-                }
+                        this.state.descriptions.map( (text,i) =>
+                        {
+                            return (
+                            <Task key={i} index={i} updateTaskDescription={this.updateTask} removeTaskFromList={this.removeTask}>{text}</Task>
+                            );
+                        })
+                    }
+                </div>
                 <p>Add new task here:</p>
                 <div className="newTask">
                     <input type="text" onChange={this.handleChange} value={this.state.text}/>
                     <Button type="handleSubmit" name="Add task" handleSubmitTask={this.handleSubmit}/>
                 </div>
-            </div>
+            </main>
         );
     }
 }

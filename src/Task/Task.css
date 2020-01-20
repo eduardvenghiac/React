@@ -1,9 +1,5 @@
 .task{
     display: flex;
     justify-content: center; 
-    margin-top:10px;   
-}
-
-.taskDescription{
-    margin-right:20px;
+    margin-top:10px;
 }
