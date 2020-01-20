@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import Task from './Task/Task'
+import TaskList from './TaskList/TaskList'
+import Header from './Header/Header'
+import Footer from './Footer/Footer'
+
 import './App.css';
 
 class App extends Component{
   render(){
     return (
       <div className="App">
-        <Task >Task 1</Task>
+        <Header />
+        <TaskList/>
+        <Footer />
       </div>
     );
   }

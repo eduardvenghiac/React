@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Button from '../Button/Button';
+import './Task.css';
 
 class Task extends Component{
 
@@ -11,6 +13,8 @@ class Task extends Component{
     }
 
     save = () => {
+        const text = this.refs.newDescription.value;
+        this.props.updateTaskDescription(text,this.props.index);
         this.setState({editing:false})
     }
 
@@ -18,12 +22,16 @@ class Task extends Component{
         this.setState({editing:false})
     }
 
+    delete = () => {
+        this.props.removeTaskFromList(this.props.index);
+    }
+
     renderNormalTask = () => {
         return(
             <div className="task">
                 <div className="taskDescription">{this.props.children}</div>
-                <button onClick={this.edit}>Edit</button>
-                <button onClick={this.delete}>Delete</button>
+                <Button type="edit" name="Edit" editTask={this.edit}/>
+                <Button type="delete" name="Delete" deleteTask={this.delete}/>
             </div> 
          );
     }
@@ -31,9 +39,9 @@ class Task extends Component{
     renderEditingTask = () => {
         return(
             <div className="task">
-                <input type="text" defaultValue={this.props.children}/>
-                <button onClick={this.save}>Save</button>
-                <button onClick={this.cancel}>Cancel</button>
+                <input type="text" ref="newDescription" defaultValue={this.props.children}/>
+                <Button type="save" name="Save" saveTask={this.save}/>
+                <Button type="cancel" name="Cancel" cancelTask={this.cancel}/>
             </div> 
          );
     }
