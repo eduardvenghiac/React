@@ -2,43 +2,30 @@ import React from 'react';
 import './Button.css'
 
 const Button = (props) => {
-    if(props.type==="edit")
-    {
-        return (
-            <div className="button">
-                <button onClick={props.editTask}>{props.name}</button>
-            </div>
-        );
-    }
-    else if(props.type==="delete"){
-        return (
-            <div className="button">
-                <button onClick={props.deleteTask}>{props.name}</button>
-            </div>
-        );
-    }
-    else if(props.type==="save"){
-        return (
-            <div className="button">
-                <button onClick={props.saveTask}>{props.name}</button>
-            </div>
-        );
-    }
-    else if(props.type==="cancel"){
-        return (
-            <div className="button">
-                <button onClick={props.cancelTask}>{props.name}</button>
-            </div>
-        );
-    }
-    else if(props.type==="handleSubmit"){
-        return (
-            <div className="button">
-                <button onClick={props.handleSubmitTask}>{props.name}</button>
-            </div>
-        );
-    }
 
+    var buttonType;
+    switch(props.type){
+        case 'edit':
+            buttonType=props.editTask;
+            break;
+        case 'delete':
+            buttonType=props.deleteTask;
+            break;
+        case 'save':
+            buttonType=props.saveTask;
+            break;
+        case 'cancel':
+            buttonType=props.cancelTask;
+            break;
+        case 'handleSubmit':
+            buttonType=props.handleSubmitTask;
+            break;
+    }
+    return (
+        <div className="button">
+            <button onClick={buttonType}>{props.name}</button>
+        </div>
+    );
 }
 
 export default Button;

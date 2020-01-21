@@ -6,18 +6,18 @@ import './TaskList.css';
 class TaskList extends Component{
 
     state = {
-        descriptions:[],
+        taskNames:[],
         text:''
     }
 
     removeTask = (i) => {
-        let arr = this.state.descriptions;
+        let arr = this.state.taskNames;
         arr.splice(i,1);
         this.setState({descriptions:arr})
     }
 
     updateTask = (newDescription,i) => {
-        let arr = this.state.descriptions;
+        let arr = this.state.taskNames;
         arr[i] = newDescription;
         this.setState({descriptions:arr})
     }
@@ -28,18 +28,18 @@ class TaskList extends Component{
 
     handleSubmit = () => {
         if(this.state.text.length==0){
-            return
+            return;
         }
-        this.setState({descriptions:this.state.descriptions.concat(this.state.text),text:''});
+        this.setState({descriptions:this.state.taskNames.concat(this.state.text),text:''});
     }
 
     render(){
         return(
             <main>
                 <div className="taskList">
-                    <p>Tasks:{this.state.descriptions.length}</p>
+                    <p>Tasks:{this.state.taskNames.length}</p>
                     {
-                        this.state.descriptions.map((text,i) =>
+                        this.state.taskNames.map((text,i) =>
                         {
                             return (
                             <Task key={i} index={i} updateTaskDescription={this.updateTask} removeTaskFromList={this.removeTask}>{text}</Task>
