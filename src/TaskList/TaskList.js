@@ -6,9 +6,7 @@ import './TaskList.css';
 class TaskList extends Component{
 
     state = {
-        descriptions:
-        [
-        ],
+        descriptions:[],
         text:''
     }
 
@@ -41,7 +39,7 @@ class TaskList extends Component{
                 <div className="taskList">
                     <p>Tasks:{this.state.descriptions.length}</p>
                     {
-                        this.state.descriptions.map( (text,i) =>
+                        this.state.descriptions.map((text,i) =>
                         {
                             return (
                             <Task key={i} index={i} updateTaskDescription={this.updateTask} removeTaskFromList={this.removeTask}>{text}</Task>
